@@ -25,58 +25,54 @@ import com.aiglesiasp.springrest.service.EmpleadoServiceImpl;
 @RestController
 @RequestMapping("/api")
 public class EmpleadoController {
-	
+
 	@Autowired
 	EmpleadoServiceImpl empleadoServiceImpl;
-	
-	//LISTAR TODOS LOS EMPLEADOS
+
+	// LISTAR TODOS LOS EMPLEADOS
 	@GetMapping("/empleados")
 	public List<Empleado> listarEmpleados() {
 		return empleadoServiceImpl.listarEmpleados();
 	}
-	
-	//GUARDAR EMPLEADOS     
+
+	// GUARDAR EMPLEADOS
 	@PostMapping("/empleados")
 	public Empleado guardarEmpleado(@RequestBody Empleado empleado) {
 		return empleadoServiceImpl.guardarEmpleado(empleado);
 	}
-	
-	//BUSCAR EMPLEADO POR ID
+
+	// BUSCAR EMPLEADO POR ID
 	@GetMapping("/empleados/{id}")
-	public Empleado listarEmpleadoId(@PathVariable(name="id") Long id) {
+	public Empleado listarEmpleadoId(@PathVariable(name = "id") Long id) {
 		return empleadoServiceImpl.listarEmpleadoId(id);
 	}
-	
-	//BUSCAR EMPLEADO POR NOMBRE 
+
+	// BUSCAR EMPLEADO POR NOMBRE
 	@GetMapping("/empleados/nombre/{nombre}")
-	public List<Empleado> listarEmpleadoNombre(@PathVariable(name="nombre") String nombre) {
+	public List<Empleado> listarEmpleadoNombre(@PathVariable(name = "nombre") String nombre) {
 		return empleadoServiceImpl.listarEmpleadoNombre(nombre);
 	}
-	
-	//ACTUALIZAR EMPLEADO       NO FUNCIONA!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	// ACTUALIZAR EMPLEADO
 	@PutMapping("/empleados/{id}")
-	public Empleado actualizarEmpleado(@PathVariable(name="id")Long id, @RequestBody Empleado empleado) {
+	public Empleado actualizarEmpleado(@PathVariable(name = "id") Long id, @RequestBody Empleado empleado) {
 		Empleado empleadoOld = new Empleado();
 		Empleado empleadoNew = new Empleado();
-		
+
 		empleadoOld = empleadoServiceImpl.listarEmpleadoId(id);
 		empleadoOld.setNombre(empleado.getNombre());
 		empleadoOld.setTrabajo(empleado.getTrabajo());
 		empleadoOld.setSalario(empleado.getSalario());
-		
+
 		empleadoNew = empleadoServiceImpl.actualizarEmpleado(empleadoOld);
 		return empleadoNew;
-		
+
 	}
-	
-	//ELIMINAR EMPLEADO
+
+	// ELIMINAR EMPLEADO
 	@DeleteMapping("/empleados/{id}")
-	public void eliminarEmpleado(@PathVariable(name="id")Long id) {
+	public void eliminarEmpleado(@PathVariable(name = "id") Long id) {
 		empleadoServiceImpl.eliminarEmpleado(id);
 	}
-	
-	
-	
-	
 
 }

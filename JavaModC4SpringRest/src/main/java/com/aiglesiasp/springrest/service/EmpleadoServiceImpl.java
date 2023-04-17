@@ -16,8 +16,8 @@ import com.aiglesiasp.springrest.dto.Empleado;
  *
  */
 @Service
-public class EmpleadoServiceImpl implements IEmpleadoService{
-	
+public class EmpleadoServiceImpl implements IEmpleadoService {
+
 	@Autowired
 	IEmpleadoDAO iEmpleadoDAO;
 
@@ -49,7 +49,7 @@ public class EmpleadoServiceImpl implements IEmpleadoService{
 	@Override
 	public void eliminarEmpleado(Long id) {
 		iEmpleadoDAO.deleteById(id);
-		
+
 	}
 
 }

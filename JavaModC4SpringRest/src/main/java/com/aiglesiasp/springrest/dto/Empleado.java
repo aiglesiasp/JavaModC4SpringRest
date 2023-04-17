@@ -18,29 +18,6 @@ import jakarta.persistence.Table;
 @Table(name = "empleado")
 public class Empleado {
 
-	// ENUMERADO DE TRABAJOS
-	enum Trabajos {
-
-		SENIOR("senior", 40000), JUNIOR("junior", 25000), BECARIO("becario", 20000), DISEÑO("diseño", 30000),
-		JEFE("jefe", 50000);
-
-		private String trabajo;
-		private int salario;
-
-		private Trabajos(String trabajo, int salario) {
-			this.trabajo = trabajo;
-			this.salario = salario;
-		}
-
-		public int getSalario() {
-			return salario;
-		}
-
-		public String getTrabajo() {
-			return trabajo;
-		}
-	};
-
 	// Atributos de entidad empleado
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
