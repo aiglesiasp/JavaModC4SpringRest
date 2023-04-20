@@ -27,17 +27,16 @@ public class Empleado {
 	@Column(name = "trabajo")
 	private String trabajo;
 	@Column(name = "salario")
-	private int salario;
+	private double salario;
 
 	// CONSTRUCTORES
 	public Empleado() {
 
 	}
 
-	public Empleado(String nombre, String trabajo) {
+	public Empleado(String nombre, String trabajo, Double salario) {
 		this.nombre = nombre;
 		this.trabajo = trabajo;
-		this.salario = generarSalario(trabajo);
 
 	}
 
@@ -64,13 +63,14 @@ public class Empleado {
 
 	public void setTrabajo(String trabajo) {
 		this.trabajo = trabajo;
+		this.salario = generarSalario(trabajo);
 	}
 
-	public int getSalario() {
+	public double getSalario() {
 		return salario;
 	}
 
-	public void setSalario(int salario) {
+	public void setSalario(double salario) {
 		this.salario = salario;
 	}
 
@@ -80,22 +80,22 @@ public class Empleado {
 	}
 
 	// METODO PARA GENERAR SALARIO
-	private int generarSalario(String trabajo) {
-		int salario = 0;
-		switch (trabajo.toUpperCase()) {
-		case "SENIOR":
+	private double generarSalario(String trabajo) {
+		double salario = 0.0;
+		switch (trabajo) {
+		case "Senior":
 			salario = 40000;
 			break;
-		case "JUNIOR":
+		case "Junior":
 			salario = 25000;
 			break;
-		case "BECARIO":
+		case "Becario":
 			salario = 20000;
 			break;
-		case "DISEÑO":
+		case "Diseño":
 			salario = 30000;
 			break;
-		case "JEFE":
+		case "Jefe":
 			salario = 50000;
 			break;
 		default:

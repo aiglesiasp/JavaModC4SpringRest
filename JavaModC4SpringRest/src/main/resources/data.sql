@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS empleado;
 create table empleado(
 	id long auto_increment,
 	nombre varchar(250),
-	trabajo varchar(250),
-	salario int
+	trabajo enum('Senior', 'Jefe', 'Diseño', 'Junior', 'Becario'),
+	salario double
 );
 
 insert into empleado (nombre, trabajo, salario)values('Jose','Senior',30000);
